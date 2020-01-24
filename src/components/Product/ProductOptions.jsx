@@ -4,18 +4,26 @@ const ProductOption = ({data}) => {
     const renderOptions = () => {
         if (data !== undefined) {
             return (
-                Object.keys(data).map((nameOption) => {
-                    return (
-                        <div className='options-item' key={data[nameOption].id}>
-                            <div className="options-item-name">
-                                <span>{data[nameOption].name}</span>
+                <div className='options-container'>
+                    <div className="options-container-head">
+                        <h4>Options</h4>
+                        <h4>Value</h4>
+                    </div>
+                    <div className="line"/>
+                    {Object.keys(data).map((nameOption) => {
+                        return (
+                            <div className='options-item' key={data[nameOption].id}>
+                                <div className="options-item-name">
+                                    <span className='options-name'>{data[nameOption].name}</span>
+                                </div>
+                                <div className="options-item-value">
+                                    <span>{data[nameOption].value}</span>
+                                </div>
                             </div>
-                            <div className="options-item-value">
-                                <span>{data[nameOption].value}</span>
-                            </div>
-                        </div>
-                    )
-                })
+                        )
+                    })}
+                    <div className="line"/>
+                </div>
             )
         } else {
             return null
@@ -23,13 +31,9 @@ const ProductOption = ({data}) => {
     };
 
     return (
-        <div className='options-container'>
-            <div className="options-container-head">
-                <h5>Options</h5>
-                <h5>Value</h5>
-            </div>
+        <>
             {renderOptions()}
-        </div>
+        </>
     )
 };
 
