@@ -2,6 +2,10 @@ const initialState = {
     isFetching: false,
     isError: null,
     id: 0,
+    date: null,
+    answerUser: null,
+    statistics: {},
+    id_answer: 0,
     result: null,
     massProducts: null
 };
@@ -20,9 +24,22 @@ const product = (state = initialState, action) => {
                 ...state,
                 isFetching: false,
                 isError: null,
+                isLogin: true,
                 id: action.payload.id,
+                date: action.payload.date,
+                answerUser: action.payload.answerUser,
+                statistics: action.payload.statistics,
+                id_answer: action.payload.id_answer,
                 result: action.payload.result,
                 massProducts: action.payload.massProducts
+            };
+
+        case 'GET_COUPLE_PRODUCTS_LOGIN_ERROR':
+            return {
+                ...state,
+                isFetching: true,
+                isError: null,
+                isLogin: false
             };
 
         case 'GET_COUPLE_PRODUCTS_ERROR':

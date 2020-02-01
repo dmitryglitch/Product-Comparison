@@ -38,7 +38,7 @@ code {
 
 .product-container-item-name {
     width: 95%;
-    height: 60px;
+    height: fit-content;
     padding: 10px;
 
     display: flex;
@@ -100,7 +100,7 @@ code {
     justify-content: space-between;
     text-align: center;
 
-    margin: 10px;
+    padding: 10px;
 }
 
 .specs-container-head h4 {
@@ -185,9 +185,24 @@ code {
     margin: 25px;
 }
 
+.image-gallery.image-gallery-using-mouse {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.image-gallery-content.bottom.fullscreen {
+    width: 50%;
+}
+
+.image-gallery-slide-wrapper.bottom {
+    width: 100%;
+}
+
 /*BUTTON-BAR*/
 .button-bar-content {
     display: flex;
+    flex-direction: column;
     justify-content: space-between;
     padding: 20px;
     margin: 0 25px 25px 25px;
@@ -195,3 +210,192 @@ code {
     border-radius: 10px;
     background-color: slategray;
 }
+
+.button-bar-content-top {
+    display: flex;
+    justify-content: space-between;
+}
+
+.button-bar-content-center-bt {
+    display: flex;
+}
+
+.button-bar-content-center button {
+    margin: 5px;
+}
+
+.button-bar-info-content {
+    text-align: center;
+    color: black;
+}
+
+.button-bar-content-left button {
+    width: 100px;
+    height: 100px;
+    border-radius: 100px;
+    background-color: steelblue;
+    cursor: pointer;
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.17);
+    border: 0;
+    color: #fff;
+}
+
+.btn-confirm {
+    width: 100px;
+    height: 100px;
+    border-radius: 100px;
+    background-color: forestgreen;
+    cursor: pointer;
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.17);
+    border: 0;
+    color: #fff;
+}
+
+.btn-questions {
+    width: 100px;
+    height: 100px;
+    border-radius: 100px;
+    background-color: orange;
+    cursor: pointer;
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.17);
+    border: 0;
+    color: #fff;
+}
+
+.btn-unconfirmed {
+    width: 100px;
+    height: 100px;
+    border-radius: 100px;
+    background-color: firebrick;
+    cursor: pointer;
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.17);
+    border: 0;
+    color: #fff;
+}
+
+.btn-warning {
+    width: 100px;
+    height: 100px;
+    border-radius: 100px;
+    background-color: yellow !important;
+    cursor: pointer;
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.17);
+    border: 0;
+    color: #000;
+}
+
+.btn-mismatch {
+    width: 100px;
+    height: 100px;
+    border-radius: 100px;
+    background-color: firebrick;
+    cursor: pointer;
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.17);
+    border: 0;
+    color: #fff;
+}
+
+.button-modal-auth {
+    display: none;
+}
+
+.button-bar-content-right {
+    display: flex;
+}
+
+.button-bar-content-right button {
+    margin: 5px;
+}
+
+.logout {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding: 10px;
+}
+
+.modal-body.modal-auth-body {
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: fit-content;
+    width: 100%;
+}
+
+.auth-button {
+    width: 50px;
+}
+
+.modal-body-input-form {
+    display: flex;
+    flex-direction: column;
+    padding: 30px;
+}
+
+.modal-body-input-form input {
+    width: 300px;
+}
+
+.modal-body-input-login {
+    margin-bottom: 10px;
+    border: 2px double;
+    border-radius: 5px;
+    padding: 10.5px 8px;
+}
+
+.modal-body-input-password {
+    border: 2px double;
+    border-radius: 5px;
+    padding: 10.5px 8px;
+}
+
+.modal-auth {
+    display: flex !important;
+    width: 100%;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-auth-dialog {
+    width: 500px;
+}
+
+.logout-user-name {
+
+    margin-right: 10px;
+}
+
+.modal-header .close {
+    padding: 5px;
+    width: 40px;
+    height: 40px;
+}
+
+.modal-body-input-form {
+    display: flex;
+    flex-direction: column;
+    padding: 30px;
+}
+
+.modal-body-button-form button {
+    width: 50px;
+    background-color: #000;
+    border: 0 solid transparent;
+    cursor: pointer !important;
+    color: #fff;
+    border-radius: 100px;
+    outline: none;
+    height: 30px;
+}
+
+/*STATISTIC*/
+.statistic-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 20px;
+    color: #fff;
+}
+

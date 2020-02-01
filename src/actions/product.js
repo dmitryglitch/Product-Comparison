@@ -2,21 +2,76 @@ export const getCoupleProducts = () => dispatch => {
     dispatch({type: 'GET_COUPLE_PRODUCTS_STATED'});
 
     fetch(
-        'http://match.protarget.pro/backend/getNewTask2.php', {
+        'http://match.protarget.pro/backend/getNewTask.php', {
             method: "POST",
+            credentials: 'same-origin',
             headers: {Accept: "application/json"}
         })
         .then(res => res.json())
         .then(json => {
-            let data = {
-                id: json.id,
-                result: json.result,
-                massProducts: {
-                    oneProduct: json.oneProduct,
-                    twoProduct: json.newTwoProduct,
-                }
-            };
-            dispatch({type: 'GET_COUPLE_PRODUCTS_SUCCESS', payload: data})
+            console.log(json);
+            if (json.result === 'Ok') {
+                let data = {
+                    id: json.id,
+                    date: json.date,
+                    id_answer: json.id_answer,
+                    answerUser: json.answerUser,
+                    userName: json.userName,
+                    result: json.result,
+                    statistics: json.statistics,
+                    massProducts: {
+                        oneProduct: json.oneProduct,
+                        twoProduct: json.newTwoProduct,
+                    }
+                };
+                dispatch({type: 'GET_COUPLE_PRODUCTS_SUCCESS', payload: data});
+                dispatch({type: 'SEND_LOGIN_USER_SUCCESS', payload: json.userName});
+            } else {
+                dispatch({type: 'GET_COUPLE_PRODUCTS_LOGIN_ERROR'})
+            }
         })
-        .catch(error => dispatch({type: 'GET_COUPLE_PRODUCTS_ERROR', payload: error}));
+        .catch(error => {
+            console.log(error);
+            dispatch({type: 'GET_COUPLE_PRODUCTS_ERROR', payload: error})
+        });
+};
+
+export const getBackCoupleProducts = (dateCoupleProducts) => dispatch => {
+    let date = new FormData();
+    date.append('date', dateCoupleProducts);
+
+    dispatch({type: 'GET_COUPLE_PRODUCTS_STATED'});
+    fetch(
+        'http://match.protarget.pro/backend/getBackTask.php', {
+            method: "POST",
+            body: date,
+            credentials: 'same-origin',
+            headers: {Accept: "application/json"}
+        })
+        .then(res => res.json())
+        .then(json => {
+            console.log('getBackCoupleProducts RESPONSE', json);
+            if (json.result === 'Ok') {
+                let data = {
+                    id: json.id,
+                    id_answer: json.id_answer,
+                    date: json.date,
+                    userName: json.userName,
+                    answerUser: json.answerUser,
+                    result: json.result,
+                    statistics: json.statistics,
+                    massProducts: {
+                        oneProduct: json.oneProduct,
+                        twoProduct: json.newTwoProduct,
+                    }
+                };
+                dispatch({type: 'GET_COUPLE_PRODUCTS_SUCCESS', payload: data});
+            } else {
+                dispatch({type: 'GET_COUPLE_PRODUCTS_LOGIN_ERROR'})
+            }
+        })
+        .catch(error => {
+            console.log(error);
+            dispatch({type: 'GET_COUPLE_PRODUCTS_ERROR', payload: error})
+        });
 };
