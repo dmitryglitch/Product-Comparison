@@ -1,3 +1,9 @@
+html {
+    height: 100vh;
+    width: 100vw;
+    font-size: 12px;
+}
+
 *, body {
     margin: 0;
     padding: 0;
@@ -6,6 +12,11 @@
     sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+}
+
+.root {
+    display: grid;
+    width: 100%;
 }
 
 code {
@@ -50,7 +61,6 @@ code {
     background-color: linen;
     border-radius: 10px;
 }
-
 
 /* OPTIONS */
 .options-container-head {
@@ -204,8 +214,8 @@ code {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    padding: 20px;
-    margin: 0 25px 25px 25px;
+    padding: 5px 15px 5px 15px;
+    margin: 0 25px 5px 25px;
     border: 1px solid;
     border-radius: 10px;
     background-color: slategray;
@@ -230,8 +240,8 @@ code {
 }
 
 .button-bar-content-left button {
-    width: 100px;
-    height: 100px;
+    width: 80px;
+    height: 80px;
     border-radius: 100px;
     background-color: steelblue;
     cursor: pointer;
@@ -241,8 +251,8 @@ code {
 }
 
 .btn-confirm {
-    width: 100px;
-    height: 100px;
+    width: 80px;
+    height: 80px;
     border-radius: 100px;
     background-color: forestgreen;
     cursor: pointer;
@@ -252,8 +262,8 @@ code {
 }
 
 .btn-questions {
-    width: 100px;
-    height: 100px;
+    width: 80px;
+    height: 80px;
     border-radius: 100px;
     background-color: orange;
     cursor: pointer;
@@ -263,8 +273,8 @@ code {
 }
 
 .btn-unconfirmed {
-    width: 100px;
-    height: 100px;
+    width: 80px;
+    height: 80px;
     border-radius: 100px;
     background-color: firebrick;
     cursor: pointer;
@@ -274,8 +284,8 @@ code {
 }
 
 .btn-warning {
-    width: 100px;
-    height: 100px;
+    width: 80px;
+    height: 80px;
     border-radius: 100px;
     background-color: yellow !important;
     cursor: pointer;
@@ -285,8 +295,8 @@ code {
 }
 
 .btn-mismatch {
-    width: 100px;
-    height: 100px;
+    width: 80px;
+    height: 80px;
     border-radius: 100px;
     background-color: firebrick;
     cursor: pointer;
@@ -306,6 +316,12 @@ code {
 .button-bar-content-right button {
     margin: 5px;
 }
+
+/*.button-bar-contaner {*/
+/*    width: 100%;*/
+/*    position: absolute;*/
+/*    bottom: 0;*/
+/*}*/
 
 .logout {
     display: flex;
@@ -395,7 +411,16 @@ code {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-top: 20px;
+    margin-top: 10px;
     color: #fff;
 }
 
+/* SEARCH */
+.search-content {
+    padding: 5px 15px 5px 15px;
+    margin: 0 25px 5px 25px;
+}
+
+.search-content input{
+    margin: 10px;
+}

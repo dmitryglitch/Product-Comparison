@@ -49,6 +49,120 @@ const product = (state = initialState, action) => {
                 isError: action.payload
             };
 
+        case 'GET_BACK_COUPLE_PRODUCTS_STATED':
+            return {
+                ...state,
+                isFetching: true,
+                isError: null
+            };
+
+        case 'GET_BACK_COUPLE_PRODUCTS_SUCCESS':
+            return {
+                ...state,
+                isFetching: false,
+                isError: null,
+                isLogin: true,
+                id: action.payload.id,
+                date: action.payload.date,
+                answerUser: action.payload.answerUser,
+                statistics: action.payload.statistics,
+                id_answer: action.payload.id_answer,
+                result: action.payload.result,
+                massProducts: action.payload.massProducts
+            };
+
+        case 'GET_BACK_COUPLE_PRODUCTS_LOGIN_ERROR':
+            return {
+                ...state,
+                isFetching: true,
+                isError: null,
+                isLogin: false
+            };
+
+        case 'GET_BACK_COUPLE_PRODUCTS_ERROR':
+            return {
+                ...state,
+                isFetching: false,
+                isError: action.payload
+            };
+
+
+        case 'GET_FORWARD_COUPLE_PRODUCTS_STATED':
+            return {
+                ...state,
+                isFetching: true,
+                isError: null
+            };
+
+        case 'GET_FORWARD_COUPLE_PRODUCTS_SUCCESS':
+            return {
+                ...state,
+                isFetching: false,
+                isError: null,
+                isLogin: true,
+                id: action.payload.id,
+                date: action.payload.date,
+                answerUser: action.payload.answerUser,
+                statistics: action.payload.statistics,
+                id_answer: action.payload.id_answer,
+                result: action.payload.result,
+                massProducts: action.payload.massProducts
+            };
+
+        case 'GET_FORWARD_COUPLE_PRODUCTS_LOGIN_ERROR':
+            return {
+                ...state,
+                isFetching: true,
+                isError: null,
+                isLogin: false
+            };
+
+        case 'GET_FORWARD_COUPLE_PRODUCTS_ERROR':
+            return {
+                ...state,
+                isFetching: false,
+                isError: action.payload
+            };
+
+
+
+        case 'SEARCH_COUPLE_PRODUCTS_STATED':
+            return {
+                ...state,
+                isFetching: true,
+                isError: null
+            };
+
+        case 'SEARCH_COUPLE_PRODUCTS_SUCCESS':
+            return {
+                ...state,
+                isFetching: false,
+                isError: null,
+                isLogin: true,
+                id: action.payload.id,
+                date: action.payload.date,
+                answerUser: action.payload.answerUser,
+                statistics: action.payload.statistics,
+                id_answer: action.payload.id_answer,
+                result: action.payload.result,
+                massProducts: action.payload.massProducts
+            };
+
+        case 'SEARCH_PRODUCTS_LOGIN_ERROR':
+            return {
+                ...state,
+                isFetching: true,
+                isError: null,
+                isLogin: false
+            };
+
+        case 'SEARCH_COUPLE_PRODUCTS_ERROR':
+            return {
+                ...state,
+                isFetching: false,
+                isError: action.payload
+            };
+
         default:
             return state;
     }

@@ -6,7 +6,7 @@ export const sendUserLogin = (userName, password) => dispatch => {
     data.append('password', password);
 
     fetch(
-        'http://match.protarget.pro/backend/isLogined.php', {
+        'http://match-dev.protarget.pro/backend/isLogined.php', {
             method: "POST",
             credentials: 'same-origin',
             headers: {Accept: "application/json"},

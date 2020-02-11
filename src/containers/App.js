@@ -4,10 +4,16 @@ import './App.css';
 import Product from '../components/Product/Product'
 import ButtonBar from '../components/ButtonBar/ButtonBar'
 import ModalAuth from '../components/ModalAuth/ModalAuth'
+import Search from '../components/Search/Search'
 
 import {connect} from 'react-redux'
 import {sendUserLogin} from '../actions/user'
-import {getCoupleProducts, getBackCoupleProducts} from '../actions/product'
+import {
+    getCoupleProducts,
+    getBackCoupleProducts,
+    getForwardCoupleProducts,
+    searchCoupleProducts
+} from '../actions/product'
 import {sendAnswerCoupleProduct} from '../actions/buttonbar'
 
 class App extends Component {
@@ -71,9 +77,15 @@ class App extends Component {
                         idCurrentCoupleProduct={this.props.products.id_answer}
                         sendAnswerCoupleProduct={this.props.onSendAnswerCoupleProduct}
                         getBackCoupleProducts={this.props.onGetBackCoupleProducts}
+                        getForwardCoupleProducts={this.props.onGetForwardCoupleProducts}
                         dateCoupleProducts={this.props.products.date}
                         answerUser={this.props.products.answerUser}
                         statistics={this.props.products.statistics}
+                    />
+                </div>
+                <div className="search-container">
+                    <Search
+                        searchCoupleProducts={this.props.onSearchCoupleProducts}
                     />
                 </div>
             </>
@@ -96,8 +108,14 @@ export default connect(
         onGetBackCoupleProducts: (date) => {
             dispatch(getBackCoupleProducts(date))
         },
+        onGetForwardCoupleProducts: (date) => {
+            dispatch(getForwardCoupleProducts(date))
+        },
         onSendAnswerCoupleProduct: (id, answer) => {
             dispatch(sendAnswerCoupleProduct(id, answer))
+        },
+        onSearchCoupleProducts: (id) => {
+            dispatch(searchCoupleProducts(id))
         }
     })
 )(App);

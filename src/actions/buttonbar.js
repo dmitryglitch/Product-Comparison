@@ -10,7 +10,7 @@ export const sendAnswerCoupleProduct = (id, answer) => dispatch => {
     data.append('answer', answer);
 
     fetch(
-        'http://match.protarget.pro/backend/setUserAnswer.php', {
+        'http://match-dev.protarget.pro/backend/setUserAnswer.php', {
             method: "POST",
             credentials: 'same-origin',
             headers: {Accept: "application/json"},

@@ -5,6 +5,7 @@ const ButtonBar = ({
                        idCurrentCoupleProduct,
                        sendAnswerCoupleProduct,
                        getBackCoupleProducts,
+                       getForwardCoupleProducts,
                        dateCoupleProducts,
                        answerUser,
                        statistics
@@ -14,9 +15,12 @@ const ButtonBar = ({
         sendAnswerCoupleProduct(idCurrentCoupleProduct, answer);
     };
 
-    const handleClickOnBackButton = ({}) => {
-        console.log('dateCP', dateCoupleProducts);
+    const handleClickOnBackButton = () => {
         getBackCoupleProducts(dateCoupleProducts)
+    };
+
+    const handleClickOnForwardButton = () => {
+        getForwardCoupleProducts(dateCoupleProducts)
     };
 
     return (
@@ -25,6 +29,7 @@ const ButtonBar = ({
                 <div className="button-bar-content-top">
                     <div className="button-bar-content-left">
                         <button onClick={handleClickOnBackButton}>Back</button>
+                        <button onClick={handleClickOnForwardButton}>Forward</button>
                     </div>
                     <div className="button-bar-content-center">
                         <div className="button-bar-content-center-bt">
