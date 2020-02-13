@@ -12,13 +12,6 @@ const initialState = {
 
 const product = (state = initialState, action) => {
     switch (action.type) {
-        case 'GET_COUPLE_PRODUCTS_STATED':
-            return {
-                ...state,
-                isFetching: true,
-                isError: null
-            };
-
         case 'GET_COUPLE_PRODUCTS_SUCCESS':
             return {
                 ...state,
@@ -32,28 +25,6 @@ const product = (state = initialState, action) => {
                 id_answer: action.payload.id_answer,
                 result: action.payload.result,
                 massProducts: action.payload.massProducts
-            };
-
-        case 'GET_COUPLE_PRODUCTS_LOGIN_ERROR':
-            return {
-                ...state,
-                isFetching: true,
-                isError: null,
-                isLogin: false
-            };
-
-        case 'GET_COUPLE_PRODUCTS_ERROR':
-            return {
-                ...state,
-                isFetching: false,
-                isError: action.payload
-            };
-
-        case 'GET_BACK_COUPLE_PRODUCTS_STATED':
-            return {
-                ...state,
-                isFetching: true,
-                isError: null
             };
 
         case 'GET_BACK_COUPLE_PRODUCTS_SUCCESS':
@@ -71,29 +42,6 @@ const product = (state = initialState, action) => {
                 massProducts: action.payload.massProducts
             };
 
-        case 'GET_BACK_COUPLE_PRODUCTS_LOGIN_ERROR':
-            return {
-                ...state,
-                isFetching: true,
-                isError: null,
-                isLogin: false
-            };
-
-        case 'GET_BACK_COUPLE_PRODUCTS_ERROR':
-            return {
-                ...state,
-                isFetching: false,
-                isError: action.payload
-            };
-
-
-        case 'GET_FORWARD_COUPLE_PRODUCTS_STATED':
-            return {
-                ...state,
-                isFetching: true,
-                isError: null
-            };
-
         case 'GET_FORWARD_COUPLE_PRODUCTS_SUCCESS':
             return {
                 ...state,
@@ -107,30 +55,6 @@ const product = (state = initialState, action) => {
                 id_answer: action.payload.id_answer,
                 result: action.payload.result,
                 massProducts: action.payload.massProducts
-            };
-
-        case 'GET_FORWARD_COUPLE_PRODUCTS_LOGIN_ERROR':
-            return {
-                ...state,
-                isFetching: true,
-                isError: null,
-                isLogin: false
-            };
-
-        case 'GET_FORWARD_COUPLE_PRODUCTS_ERROR':
-            return {
-                ...state,
-                isFetching: false,
-                isError: action.payload
-            };
-
-
-
-        case 'SEARCH_COUPLE_PRODUCTS_STATED':
-            return {
-                ...state,
-                isFetching: true,
-                isError: null
             };
 
         case 'SEARCH_COUPLE_PRODUCTS_SUCCESS':
@@ -148,6 +72,19 @@ const product = (state = initialState, action) => {
                 massProducts: action.payload.massProducts
             };
 
+        case 'GET_COUPLE_PRODUCTS_STATED':
+        case 'GET_BACK_COUPLE_PRODUCTS_STATED':
+        case 'GET_FORWARD_COUPLE_PRODUCTS_STATED':
+        case 'SEARCH_COUPLE_PRODUCTS_STATED':
+            return {
+                ...state,
+                isFetching: true,
+                isError: null
+            };
+
+        case 'GET_COUPLE_PRODUCTS_LOGIN_ERROR':
+        case 'GET_BACK_COUPLE_PRODUCTS_LOGIN_ERROR':
+        case 'GET_FORWARD_COUPLE_PRODUCTS_LOGIN_ERROR':
         case 'SEARCH_PRODUCTS_LOGIN_ERROR':
             return {
                 ...state,
@@ -156,6 +93,9 @@ const product = (state = initialState, action) => {
                 isLogin: false
             };
 
+        case 'GET_COUPLE_PRODUCTS_ERROR':
+        case 'GET_BACK_COUPLE_PRODUCTS_ERROR':
+        case 'GET_FORWARD_COUPLE_PRODUCTS_ERROR':
         case 'SEARCH_COUPLE_PRODUCTS_ERROR':
             return {
                 ...state,
@@ -166,7 +106,6 @@ const product = (state = initialState, action) => {
         default:
             return state;
     }
-
 };
 
 export default product

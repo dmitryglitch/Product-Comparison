@@ -28,8 +28,8 @@ const ButtonBar = ({
             <div className="button-bar-content">
                 <div className="button-bar-content-top">
                     <div className="button-bar-content-left">
-                        <button onClick={handleClickOnBackButton}>Back</button>
-                        <button onClick={handleClickOnForwardButton}>Forward</button>
+                        <button className="btn-back" onClick={handleClickOnBackButton}>Back</button>
+                        <button className="btn-forward" onClick={handleClickOnForwardButton}>Forward</button>
                     </div>
                     <div className="button-bar-content-center">
                         <div className="button-bar-content-center-bt">

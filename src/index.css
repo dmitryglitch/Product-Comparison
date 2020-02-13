@@ -37,7 +37,7 @@ code {
     padding: 20px;
     margin: 25px;
 
-
+    box-shadow: 0 5px 0 #ebebeb;
     display: flex;
     align-items: center;
     flex-direction: column;
@@ -57,6 +57,7 @@ code {
     align-items: center;
     text-align: center;
     flex-direction: column;
+    box-shadow: 0 5px 0 #ebebeb;
 
     background-color: linen;
     border-radius: 10px;
@@ -85,6 +86,7 @@ code {
     margin-top: 25px;
     background-color: aliceblue;
     border-radius: 10px;
+    box-shadow: 0 5px 0 #ebebeb;
 }
 
 .options-item {
@@ -125,6 +127,7 @@ code {
     flex-direction: column;
     margin-top: 25px;
 
+    box-shadow: 0 5px 0 #ebebeb;
     border-radius: 10px;
     background-color: lavenderblush;
 }
@@ -218,7 +221,8 @@ code {
     margin: 0 25px 5px 25px;
     border: 1px solid;
     border-radius: 10px;
-    background-color: slategray;
+    background-color: gray;
+    box-shadow: 0 5px 0 #ebebeb;
 }
 
 .button-bar-content-top {
@@ -242,12 +246,20 @@ code {
 .button-bar-content-left button {
     width: 80px;
     height: 80px;
+    margin: 5px;
     border-radius: 100px;
-    background-color: steelblue;
     cursor: pointer;
     box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.17);
     border: 0;
     color: #fff;
+}
+
+.btn-back{
+    background-color: steelblue;
+}
+
+.btn-forward{
+    background-color: plum;
 }
 
 .btn-confirm {

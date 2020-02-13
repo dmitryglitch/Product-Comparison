@@ -2,7 +2,7 @@ export const getCoupleProducts = () => dispatch => {
     dispatch({type: 'GET_COUPLE_PRODUCTS_STATED'});
 
     fetch(
-        'http://match-dev.protarget.pro/backend/getNewTask.php', {
+        'http://match.protarget.pro/backend/getNewTask.php', {
             method: "POST",
             credentials: 'same-origin',
             headers: {Accept: "application/json"}
@@ -42,7 +42,7 @@ export const getBackCoupleProducts = (dateCoupleProducts) => dispatch => {
 
     dispatch({type: 'GET_BACK_COUPLE_PRODUCTS_STATED'});
     fetch(
-        'http://match-dev.protarget.pro/backend/getBackTask.php', {
+        'http://match.protarget.pro/backend/getBackTask.php', {
             method: "POST",
             body: data,
             credentials: 'same-origin',
@@ -51,6 +51,7 @@ export const getBackCoupleProducts = (dateCoupleProducts) => dispatch => {
         .then(res => res.json())
         .then(json => {
             console.log('getBackCoupleProducts RESPONSE', json);
+
             if (json.result === 'Ok') {
                 let data = {
                     id: json.id,
@@ -82,7 +83,7 @@ export const getForwardCoupleProducts = (dateCoupleProducts) => dispatch => {
 
     dispatch({type: 'GET_FORWARD_COUPLE_PRODUCTS_STATED'});
     fetch(
-        'http://match-dev.protarget.pro/backend/getBackTask.php', {
+        'http://match.protarget.pro/backend/getForwardTask.php', {
             method: "POST",
             body: data,
             credentials: 'same-origin',
@@ -122,7 +123,7 @@ export const searchCoupleProducts = (id) => dispatch => {
 
     dispatch({type: 'SEARCH_COUPLE_PRODUCTS_STATED'});
     fetch(
-        'http://match-dev.protarget.pro/backend/getSearchProduct.php', {
+        'http://match.protarget.pro/backend/getSearchProduct.php', {
             method: "POST",
             body: data,
             credentials: 'same-origin',
