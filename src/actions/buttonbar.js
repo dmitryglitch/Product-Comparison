@@ -1,15 +1,20 @@
 import { getCoupleProducts } from "./product";
 
-export const sendAnswerCoupleProduct = (id, answer) => dispatch => {
+export const sendAnswerCoupleProduct = (id, answer, privilege) => dispatch => {
   dispatch({ type: "SEND_ANSWER_STARTED" });
-  console.log("ID", id);
-  console.log("ANSWER", answer);
+
+  let url = "" 
+  if (privilege === 1) {
+    url = 'http://match.protarget.pro/backend/admin/setUserAnswer.php'
+  } else {
+    url = 'http://match.protarget.pro/backend/setUserAnswer.php'
+  }
 
   let data = new FormData();
   data.append("id", id);
   data.append("answer", answer);
 
-  fetch("http://match-dev.protarget.pro/backend/setUserAnswer.php", {
+  fetch(url, {
     method: "POST",
     credentials: "same-origin",
     headers: { Accept: "application/json" },
@@ -21,7 +26,7 @@ export const sendAnswerCoupleProduct = (id, answer) => dispatch => {
       console.log(json);
 
       if (json.check === true) {
-        dispatch(getCoupleProducts());
+        dispatch(getCoupleProducts(json.privilege));
       }
     })
     .catch(error => {
