@@ -1,21 +1,26 @@
-export const getCoupleProducts = () => dispatch => {
+export const getCoupleProducts = (privilege) => dispatch => {
   dispatch({ type: "GET_COUPLE_PRODUCTS_STATED" });
 
-  fetch("http://match-dev.protarget.pro/backend/getNewTask.php", {
+  let url = "" 
+  if (privilege === 1) {
+    url = 'http://match.protarget.pro/backend/admin/getNewTask.php'
+  } else {
+    url = 'http://match.protarget.pro/backend/getNewTask.php'
+  }
+
+  fetch(url , {
     method: "POST",
     credentials: "same-origin",
     headers: { Accept: "application/json" }
   })
     .then(res => res.json())
     .then(json => {
-      console.log(json);
-      if (json.result === "Ok") {
+      console.log("getCoupleProducts", json);
         let data = {
           id: json.id,
           date: json.date,
           id_answer: json.id_answer,
           answerUser: json.answerUser,
-          userName: json.userName,
           result: json.result,
           statistics: json.statistics,
           massProducts: {
@@ -24,10 +29,6 @@ export const getCoupleProducts = () => dispatch => {
           }
         };
         dispatch({ type: "GET_COUPLE_PRODUCTS_SUCCESS", payload: data });
-        dispatch({ type: "SEND_LOGIN_USER_SUCCESS", payload: json.userName });
-      } else {
-        dispatch({ type: "GET_COUPLE_PRODUCTS_LOGIN_ERROR" });
-      }
     })
     .catch(error => {
       console.error(error);
@@ -40,7 +41,7 @@ export const getBackCoupleProducts = dateCoupleProducts => dispatch => {
   data.append("date", dateCoupleProducts);
 
   dispatch({ type: "GET_BACK_COUPLE_PRODUCTS_STATED" });
-  fetch("http://match-dev.protarget.pro/backend/getBackTask.php", {
+  fetch("http://match.protarget.pro/backend/getBackTask.php", {
     method: "POST",
     body: data,
     credentials: "same-origin",
@@ -55,7 +56,6 @@ export const getBackCoupleProducts = dateCoupleProducts => dispatch => {
           id: json.id,
           id_answer: json.id_answer,
           date: json.date,
-          userName: json.userName,
           answerUser: json.answerUser,
           result: json.result,
           statistics: json.statistics,
@@ -80,7 +80,7 @@ export const getForwardCoupleProducts = dateCoupleProducts => dispatch => {
   data.append("date", dateCoupleProducts);
 
   dispatch({ type: "GET_FORWARD_COUPLE_PRODUCTS_STATED" });
-  fetch("http://match-dev.protarget.pro/backend/getForwardTask.php", {
+  fetch("http://match.protarget.pro/backend/getForwardTask.php", {
     method: "POST",
     body: data,
     credentials: "same-origin",
@@ -94,7 +94,6 @@ export const getForwardCoupleProducts = dateCoupleProducts => dispatch => {
           id: json.id,
           id_answer: json.id_answer,
           date: json.date,
-          userName: json.userName,
           answerUser: json.answerUser,
           result: json.result,
           statistics: json.statistics,
@@ -122,7 +121,7 @@ export const searchCoupleProducts = id => dispatch => {
   data.append("id", id);
 
   dispatch({ type: "SEARCH_COUPLE_PRODUCTS_STATED" });
-  fetch("http://match-dev.protarget.pro/backend/getSearchProduct.php", {
+  fetch("http://match.protarget.pro/backend/getSearchProduct.php", {
     method: "POST",
     body: data,
     credentials: "same-origin",
@@ -136,7 +135,6 @@ export const searchCoupleProducts = id => dispatch => {
           id: json.id,
           id_answer: json.id_answer,
           date: json.date,
-          userName: json.userName,
           answerUser: json.answerUser,
           result: json.result,
           statistics: json.statistics,
