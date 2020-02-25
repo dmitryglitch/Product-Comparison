@@ -7,10 +7,11 @@ const ButtonBar = ({
   getForwardCoupleProducts,
   dateCoupleProducts,
   answerUser,
+  privilege,
   statistics
 }) => {
   const handleClick = answer => {
-    sendAnswerCoupleProduct(idCurrentCoupleProduct, answer);
+    sendAnswerCoupleProduct(idCurrentCoupleProduct, answer, privilege);
   };
 
   const handleClickOnBackButton = () => {
@@ -71,10 +72,18 @@ const ButtonBar = ({
         </div>
         <div className="button-bar-content-down">
           <div className="statistic-container">
-            <p>Solved all: {statistics.all}</p>
-            <p>Solved today: {statistics.today}</p>
-            <p>Solved yesterday: {statistics.yesterday}</p>
-            <p>Solved answer: {answerUser}</p>
+            {(() => {
+              if (privilege === 0) {
+                return (
+                  <>
+                    <p>Solved all: {statistics.all}</p>
+                    <p>Solved today: {statistics.today}</p>
+                    <p>Solved yesterday: {statistics.yesterday}</p>
+                    <p>Solved answer: {answerUser}</p>
+                  </>
+                );
+              }
+            })()}
           </div>
         </div>
       </div>
