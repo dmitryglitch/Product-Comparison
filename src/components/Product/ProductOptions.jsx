@@ -6,8 +6,8 @@ const ProductOption = ({ data }) => {
       return (
         <div className="options-container">
           <div className="options-container-head">
-            <h4>Options</h4>
-            <h4>Value</h4>
+            <h5>Options</h5>
+            <h5>Value</h5>
           </div>
           <div className="line" />
           {Object.keys(data).map(nameOption => {

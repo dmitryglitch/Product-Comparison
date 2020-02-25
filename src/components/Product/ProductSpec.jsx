@@ -23,8 +23,8 @@ class ProductSpec extends Component {
             className="specs-container-head"
             onClick={this.handleClickOpeningSpecsList}
           >
-            <h4>Spec</h4>
-            <h4>Value</h4>
+            <h5>Spec</h5>
+            <h5>Value</h5>
           </div>
           <div className="line" />
           {isOpened === true
