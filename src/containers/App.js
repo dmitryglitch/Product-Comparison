@@ -2,15 +2,16 @@ import React, { Component } from "react";
 import logo from "../logo.svg";
 import "./App.css";
 import { connect } from "react-redux";
+
 // Components
 import Product from "../components/Product/Product";
 import ButtonBar from "../components/ButtonBar/ButtonBar";
 import ModalAuth from "../components/ModalAuth/ModalAuth";
 import Search from "../components/Search/Search";
-import Review from "../components/Review/Review";
+import Review from "./Review";
 
 // Actions
-import { sendUserLogin, logOut } from "../actions/user";
+import { sendUserLogin, logOut, checkUserStatus } from "../actions/user";
 import {
   getCoupleProducts,
   getBackCoupleProducts,
@@ -21,18 +22,14 @@ import { sendAnswerCoupleProduct } from "../actions/buttonbar";
 
 class App extends Component {
   componentDidMount() {
-    this.props.onGetCoupleProducts();
-    // if (this.props.user.privilege === 1) {
-    // }
+    this.props.onCheckUserStatus();
   }
 
   // TODO: отрефакторить данный участок кода (формирование полей при статусе авторизации)
   renderProducts() {
     const { massProducts } = this.props.products;
-    const { isLogin } = this.props.user;
 
-    if (isLogin === true) {
-      console.log(isLogin, "isLogin");
+    if (this.props.user.isLogin === true) {
       if (massProducts !== null) {
         return Object.keys(massProducts).map(products => {
           if (massProducts[products] !== null) {
@@ -91,17 +88,23 @@ class App extends Component {
             dateCoupleProducts={this.props.products.date}
             answerUser={this.props.products.answerUser}
             statistics={this.props.products.statistics}
+            privilege={this.props.user.privilege}
           />
         </div>
         <div className="search-container">
           <Search searchCoupleProducts={this.props.onSearchCoupleProducts} />
         </div>
-        <div className="review-container">
-          <Review/>
-        </div>
-        {/* {(() => {
-
-        })} */}
+        {(() => {
+          if (this.props.user.privilege === 1) {
+            return (
+              <>
+                <div className="review-container">
+                  <Review />
+                </div>
+              </>
+            );
+          }
+        })()}
       </>
     );
   }
@@ -114,26 +117,37 @@ export default connect(
     review: state.review
   }),
   dispatch => ({
+    // проверка статуса пользователя
+    onCheckUserStatus: () => {
+      dispatch(checkUserStatus());
+    },
+    // авторизация
     onSendLoginUser: (userName, password) => {
       dispatch(sendUserLogin(userName, password));
     },
+    // разлогинивание
     onlogOut: () => {
       dispatch(logOut());
     },
-    onGetCoupleProducts: () => {
-      dispatch(getCoupleProducts());
+    // получение пары продуктов
+    onGetCoupleProducts: privilege => {
+      dispatch(getCoupleProducts(privilege));
     },
+    // возврат к предидущему товару
     onGetBackCoupleProducts: date => {
       dispatch(getBackCoupleProducts(date));
     },
+    // возврат к впереди стоящему продукту
     onGetForwardCoupleProducts: date => {
       dispatch(getForwardCoupleProducts(date));
     },
-    onSendAnswerCoupleProduct: (id, answer) => {
-      dispatch(sendAnswerCoupleProduct(id, answer));
+    // отправка ответа пользователя
+    onSendAnswerCoupleProduct: (id, answer, privilege) => {
+      dispatch(sendAnswerCoupleProduct(id, answer, privilege));
     },
+    // поиск нужной пары продуктов
     onSearchCoupleProducts: id => {
       dispatch(searchCoupleProducts(id));
-    },
+    }
   })
 )(App);
