@@ -2,7 +2,7 @@ const initialState = {
   isFetching: false,
   isError: null,
   users: null,
-  selectedUser: "По всем",
+  selectedUser: 0,
   dateStarted: null,
   dateEnding: null,
   servingSize: null,
