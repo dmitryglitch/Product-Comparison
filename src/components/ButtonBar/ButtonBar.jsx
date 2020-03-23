@@ -15,11 +15,15 @@ const ButtonBar = ({
   };
 
   const handleClickOnBackButton = () => {
-    getBackCoupleProducts(dateCoupleProducts);
+    getBackCoupleProducts(dateCoupleProducts, privilege);
   };
 
   const handleClickOnForwardButton = () => {
-    getForwardCoupleProducts(dateCoupleProducts);
+    getForwardCoupleProducts(dateCoupleProducts, privilege);
+  };
+
+  const styleImg = {
+    boxShadow: "0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22)"
   };
 
   return (
@@ -41,16 +45,19 @@ const ButtonBar = ({
           <div className="button-bar-content-center">
             <div className="button-bar-content-center-bt">
               <img
+                style={answerUser === "confirm" ? styleImg : {}}
                 onClick={() => handleClick("confirm")}
                 src={require("./assets/confirm.png")}
                 alt=""
               />
               <img
+                style={answerUser === "questions" ? styleImg : {}}
                 src={require("./assets/questions.png")}
                 onClick={() => handleClick("questions")}
                 alt=""
               />
               <img
+                style={answerUser === "unconfirmed" ? styleImg : {}}
                 src={require("./assets/uncomfirmed.png")}
                 onClick={() => handleClick("unconfirmed")}
                 alt=""

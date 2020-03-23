@@ -1,6 +1,14 @@
 import React from "react";
 import "react-image-gallery/styles/css/image-gallery.css";
 import ImageGallery from "react-image-gallery";
+import {
+  Magnifier,
+  GlassMagnifier,
+  SideBySideMagnifier,
+  PictureInPictureMagnifier,
+  MOUSE_ACTIVATION,
+  TOUCH_ACTIVATION
+} from "react-image-magnifiers";
 
 const ProductImages = ({ data }) => {
   const renderImages = () => {

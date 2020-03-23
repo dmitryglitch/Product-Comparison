@@ -23,7 +23,7 @@ export const sendAnswerCoupleProduct = (id, answer, privilege) => dispatch => {
     .then(res => res.json())
     .then(json => {
       dispatch({ type: "SEND_ANSWER_SUCCESS", payload: data });
-      console.log(json);
+      console.log("sendAnswerCoupleProduct", json);
 
       if (json.check === true) {
         dispatch(getCoupleProducts(json.privilege));

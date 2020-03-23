@@ -7,7 +7,7 @@ import { connect } from "react-redux";
 import Product from "../components/Product/Product";
 import ButtonBar from "../components/ButtonBar/ButtonBar";
 import ModalAuth from "../components/ModalAuth/ModalAuth";
-import Search from "../components/Search/Search";
+import SearchAdminStatistic from "../components/SearchAdminStatistic/SearchAdminStatistic";
 import Review from "./Review";
 
 // Actions
@@ -16,7 +16,8 @@ import {
   getCoupleProducts,
   getBackCoupleProducts,
   getForwardCoupleProducts,
-  searchCoupleProducts
+  searchCoupleProducts,
+  setUserAnswerEnd
 } from "../actions/product";
 import { sendAnswerCoupleProduct } from "../actions/buttonbar";
 
@@ -79,6 +80,33 @@ class App extends Component {
           <button onClick={this.props.onlogOut}>Logout</button>
         </div>
         <div className="product-container">{this.renderProducts()}</div>
+        {(() => {
+          if (this.props.products.endSample === true) {
+            return (
+              <div className="questions-container">
+                <div className="questions-container-title">
+                  <p>Does this portion pass the test?</p>
+                </div>
+                <div className="questions-container-button">
+                  <button
+                    onClick={() => {
+                      this.props.onSetUserAnswerEnd("yes");
+                    }}
+                  >
+                    Yes
+                  </button>
+                  <button
+                    onClick={() => {
+                      this.props.onSetUserAnswerEnd("no");
+                    }}
+                  >
+                    No
+                  </button>
+                </div>
+              </div>
+            );
+          }
+        })()}
         <div className="button-bar-contaner">
           <ButtonBar
             idCurrentCoupleProduct={this.props.products.id_answer}
@@ -92,7 +120,12 @@ class App extends Component {
           />
         </div>
         <div className="search-container">
-          <Search searchCoupleProducts={this.props.onSearchCoupleProducts} />
+          <SearchAdminStatistic
+            answerUser={ this.props.products.answerUser }
+            answerAdmin={ this.props.products.answerAdmin }
+            statisticsAdmin={this.props.products.statisticsAdmin}
+            searchCoupleProducts={this.props.onSearchCoupleProducts}
+          />
         </div>
         {(() => {
           if (this.props.user.privilege === 1) {
@@ -134,12 +167,12 @@ export default connect(
       dispatch(getCoupleProducts(privilege));
     },
     // возврат к предидущему товару
-    onGetBackCoupleProducts: date => {
-      dispatch(getBackCoupleProducts(date));
+    onGetBackCoupleProducts: (date, privilege) => {
+      dispatch(getBackCoupleProducts(date, privilege));
     },
     // возврат к впереди стоящему продукту
-    onGetForwardCoupleProducts: date => {
-      dispatch(getForwardCoupleProducts(date));
+    onGetForwardCoupleProducts: (date, privilege) => {
+      dispatch(getForwardCoupleProducts(date, privilege));
     },
     // отправка ответа пользователя
     onSendAnswerCoupleProduct: (id, answer, privilege) => {
@@ -148,6 +181,9 @@ export default connect(
     // поиск нужной пары продуктов
     onSearchCoupleProducts: id => {
       dispatch(searchCoupleProducts(id));
+    },
+    onSetUserAnswerEnd: answer => {
+      dispatch(setUserAnswerEnd(answer));
     }
   })
 )(App);
